@@ -171,23 +171,17 @@ export default function Navigation() {
               </Link>
             </div>
 
-            {/* Mobile / Tablet controls — toggle always accessible */}
-            <div className="lg:hidden flex items-center gap-2 sm:gap-3">
-              {/* Language Toggle — VISIBLE at all times on mobile (luxury, easy access) */}
-              <div className="flex items-center">
-                <div className="scale-[0.88] sm:scale-100 origin-right">
-                  <LanguageSwitcher />
-                </div>
-              </div>
-
+            {/* Mobile — small dropdown to fix navbar */}
+            <div className="lg:hidden flex items-center gap-2">
+              <LanguageSwitcher />
               <button
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-11 h-11 flex items-center justify-center border border-white/15 text-white hover:border-[#C5A880]/50 hover:text-[#C5A880] hover:bg-white/[0.04] backdrop-blur transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C5A880] flex-shrink-0"
+                className="w-10 h-8 flex items-center justify-center border border-white/15 text-white hover:border-[#C5A880]/50 hover:text-[#C5A880] hover:bg-white/[0.04] backdrop-blur transition-all duration-300 focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C5A880] flex-shrink-0"
               >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </button>
             </div>
           </div>

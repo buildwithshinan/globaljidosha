@@ -1,39 +1,54 @@
 "use client"
 
 import { useLanguage } from "../contexts/LanguageContext"
-import { Button } from "../../components/ui/button"
-import { useState } from "react"
 
 export default function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage()
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const isEn = language === "en"
 
   return (
-    <div className="relative">
-      {/* Mobile: Dropdown */}
-      <div className="flex lg:hidden">
-        <Button
-          variant="outline"
-          size="sm"
-          className="w-full flex items-center justify-between px-4 py-2 text-[11px] tracking-[0.12em] uppercase rounded-none border-[#E8D9B8]/30 bg-white"
-          onClick={() => setDropdownOpen((open) => !open)}
-          aria-label="Select language"
+    <div
+      role="group"
+      aria-label="Language toggle — English / 日本語"
+      className="relative inline-flex items-center"
+    >
+      {/* Luxury toggle track */}
+      <div className="relative flex items-center p-1 bg-white/[0.06] backdrop-blur-md border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+        {/* Sliding luxury gold indicator */}
+        <div
+          aria-hidden="true"
+          className="absolute top-1 bottom-1 bg-[#C5A880] shadow-[0_2px_12px_rgba(197,168,128,0.4)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+          style={{
+            width: "calc(50% - 4px)",
+            left: isEn ? "4px" : "calc(50% + 2px)",
+          }}
+        />
+        <button
+          onClick={() => setLanguage("en")}
+          aria-pressed={isEn}
+          aria-label="Switch to English"
+          className={`relative z-10 min-w-[56px] px-5 py-2 text-[11px] tracking-[0.16em] uppercase font-semibold transition-colors duration-300 flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C5A880]/50 ${
+            isEn ? "text-[#070708]" : "text-white/55 hover:text-white"
+          }`}
         >
-          {language === "en" ? "EN" : "日本語"}
-          <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-        </Button>
-        {dropdownOpen && (
-          <div className="absolute left-0 mt-2 w-32 bg-white shadow-xl z-50 border border-[#E8D9B8]/30">
-            <button onClick={() => { setLanguage("en"); setDropdownOpen(false) }} className={`block w-full text-left px-4 py-3 text-sm transition-colors ${language === "en" ? "bg-[#0A0A0B] text-[#C5A880]" : "hover:bg-[#F5F0E8]"}`}>EN</button>
-            <button onClick={() => { setLanguage("ja"); setDropdownOpen(false) }} className={`block w-full text-left px-4 py-3 text-sm transition-colors ${language === "ja" ? "bg-[#0A0A0B] text-[#C5A880]" : "hover:bg-[#F5F0E8]"}`}>日本語</button>
-          </div>
-        )}
+          EN
+        </button>
+        <button
+          onClick={() => setLanguage("ja")}
+          aria-pressed={!isEn}
+          aria-label="日本語に切り替え"
+          className={`relative z-10 min-w-[72px] px-5 py-2 text-[11px] tracking-[0.16em] uppercase font-semibold transition-colors duration-300 flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C5A880]/50 ${
+            !isEn ? "text-[#070708]" : "text-white/55 hover:text-white"
+          }`}
+        >
+          日本語
+        </button>
       </div>
-      {/* Desktop: Inline */}
-      <div className="hidden lg:flex items-center gap-0 border border-white/10 p-1 bg-white/5 backdrop-blur">
-        <button onClick={() => setLanguage("en")} className={`px-4 py-1.5 text-[11px] tracking-[0.12em] uppercase font-medium transition-all ${language === "en" ? "bg-[#C5A880] text-[#070708]" : "text-white/60 hover:text-white hover:bg-white/10"}`}>EN</button>
-        <button onClick={() => setLanguage("ja")} className={`px-4 py-1.5 text-[11px] tracking-[0.12em] uppercase font-medium transition-all ${language === "ja" ? "bg-[#C5A880] text-[#070708]" : "text-white/60 hover:text-white hover:bg-white/10"}`}>日本語</button>
-      </div>
+
+      {/* Luxury micro label for desktop */}
+      <span className="hidden xl:inline-flex ml-3 text-[10px] tracking-[0.18em] uppercase text-white/30 border-l border-white/10 pl-3">
+        {isEn ? "English" : "日本語"}
+      </span>
     </div>
   )
 }

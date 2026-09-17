@@ -179,7 +179,7 @@ export default function Contact() {
                   
                   <div className="w-full mb-2">
                     <iframe 
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.949444058752!2d140.3267559!3d35.6536172!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022937ad658ed07%3A0xd8cca59ca1345249!2zSu-8hlNPTlMgQVVUT-WQiOWQjOS8muekvg!5e0!3m2!1sen!2slk!4v1752946146285!5m2!1sen!2slk"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.980245768925!2d140.32991707445075!3d35.65285833153424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x602293e46ab83427%3A0xf7f028b3008a15e1!2zR2xvYmFsIGppZG9zaGEgbGxjICwg5ZCI5ZCM5Lya56S-44Kw44Ot44O844OQ44Or6Ieq5YuV6LuK!5e0!3m2!1sen!2slk!4v1789626960621!5m2!1sen!2slk"
                       width="100%"
                       height="100%"
                       className="w-full h-60 sm:h-96 rounded-xl"

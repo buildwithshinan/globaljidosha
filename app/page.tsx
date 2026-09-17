@@ -233,7 +233,7 @@ export default function Home() {
           <span className="text-[10px] tracking-[0.32em] uppercase text-white/30 rotate-90 whitespace-nowrap">Private Atelier</span>
         </div>
 
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-8 pt-[88px]">
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-8 pt-[88px] md:pt-[128px]">
           <div className="max-w-4xl">
             <GSAPWrapper animation="fadeIn">
               <p className="hero-eyebrow inline-flex items-center gap-3 text-[11px] tracking-[0.32em] uppercase text-[#C5A880] mb-6 border border-[#C5A880]/20 px-4 py-2 bg-[#070708]/40 backdrop-blur">

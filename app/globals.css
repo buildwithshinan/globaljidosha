@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 0% 4%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 35 20% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 35 30% 64%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 15% 88%;
+    --input: 35 15% 88%;
+    --ring: 35 30% 64%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 35 20% 94%;
+    --card: 0 0% 7%;
+    --card-foreground: 35 20% 94%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 35 20% 94%;
+    --primary: 35 20% 94%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 35 20% 94%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 35 10% 65%;
+    --accent: 35 30% 64%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 35 30% 64%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  body {
+    @apply bg-[#FCFBF9] text-[#0A0A0B] antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    @apply border-[#E8E6E1];
+  }
+  
+  /* Luxury selection */
+  ::selection {
+    background: #C5A880;
+    color: #0A0A0B;
+  }
+}
+
+/* Floating animation */
+.floating-element {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineGrow {
+  from { width: 0; opacity: 0; }
+  to { width: 100%; opacity: 1; }
+}
+
+@layer utilities {
+  .bg-surface { @apply bg-white; }
+  .text-shadow { text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+  .text-shadow-lg { text-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+  .backdrop-blur-xs { backdrop-filter: blur(2px); }
+  
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+  
+  /* Gold text */
+  .text-gold { color: #C5A880; }
+  .bg-gold { background-color: #C5A880; }
+  .border-gold { border-color: #C5A880; }
+  
+  /* Luxury divider */
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #C5A880 50%, transparent 100%);
+  }
+  .gold-divider-vertical {
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, #C5A880 50%, transparent 100%);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Luxury */
+  .glassmorphism {
+    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/[0.06] shadow-2xl;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+  }
+  .glassmorphism-dark {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10 shadow-2xl;
+  }
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-xl border border-[#E8D9B8]/30 shadow-[0_8px_32px_rgba(10,10,11,0.08)];
+  }
+
+  /* Luxury Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-[#C5A880] hover:bg-[#B8986E] text-[#0A0A0B] px-8 py-[14px] rounded-none font-medium tracking-[0.12em] text-[13px] uppercase transition-all duration-500 hover:tracking-[0.14em] shadow-[0_4px_20px_rgba(197,168,128,0.3)] hover:shadow-[0_8px_30px_rgba(197,168,128,0.4)] relative overflow-hidden;
+  }
+  .btn-primary::after {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full transition-transform duration-700 skew-x-12;
+  }
+  .btn-primary:hover::after { @apply translate-x-full; }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-[#0A0A0B] hover:bg-[#1A1A1E] text-white px-8 py-[14px] rounded-none font-medium tracking-[0.12em] text-[13px] uppercase transition-all duration-500 border border-[#C5A880]/20 hover:border-[#C5A880]/40;
+  }
+
+  .btn-ghost-luxury {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent border border-white/20 hover:border-[#C5A880] text-white hover:text-[#C5A880] px-8 py-[14px] rounded-none font-medium tracking-[0.12em] text-[13px] uppercase transition-all duration-500 hover:bg-white/[0.04];
+  }
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent border border-[#0A0A0B] text-[#0A0A0B] hover:bg-[#0A0A0B] hover:text-white px-8 py-[14px] rounded-none font-medium tracking-[0.12em] text-[13px] uppercase transition-all duration-500;
+  }
+  .btn-accent {
+    @apply btn-primary;
+  }
+
+  /* Luxury Cards */
+  .card {
+    @apply bg-white rounded-none shadow-[0_4px_30px_rgba(10,10,11,0.06)] p-8 transition-all duration-700 hover:shadow-[0_20px_60px_rgba(10,10,11,0.12)] border border-[#E8E6E1] relative overflow-hidden;
+  }
+  .card-luxury {
+    @apply bg-[#0A0A0B] text-white rounded-none p-8 border border-[#C5A880]/20 hover:border-[#C5A880]/40 transition-all duration-700;
+  }
+  .card-glass {
+    @apply glass-card rounded-none p-8 transition-all duration-700 hover:shadow-[0_20px_60px_rgba(10,10,11,0.12)];
+  }
+  .card-premium {
+    @apply bg-white rounded-none shadow-[0_8px_40px_rgba(10,10,11,0.06)] p-8 transition-all duration-700 hover:shadow-[0_20px_60px_rgba(10,10,11,0.12)] border border-[#E8D9B8]/20 relative overflow-hidden;
+  }
+  .card-premium::before {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C5A880] to-transparent opacity-0 transition-opacity duration-700;
+  }
+  .card-premium:hover::before { @apply opacity-100; }
+
+  /* Gallery */
+  .gallery-grid { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8; }
+  .gallery-item {
+    @apply relative overflow-hidden rounded-none shadow-2xl transition-all duration-700 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] cursor-pointer;
+  }
+  .gallery-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 transition-all duration-500 flex items-end p-6;
+  }
+  .gallery-item:hover .gallery-overlay { @apply opacity-100; }
+
+  /* Navigation Luxury */
+  .nav-link {
+    @apply relative text-[#0A0A0B] hover:text-[#C5A880] transition-all duration-300 font-medium tracking-[0.08em] text-[13px] uppercase;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C5A880] transition-all duration-500;
+  }
+  .nav-link:hover::after, .nav-link.active::after { @apply w-full; }
+  
+  .nav-link-light {
+    @apply relative text-white/70 hover:text-[#C5A880] transition-all duration-300 font-medium tracking-[0.1em] text-[12px] uppercase;
+  }
+  .nav-link-light::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 w-0 h-[1px] bg-[#C5A880] transition-all duration-500;
+  }
+  .nav-link-light:hover::after, .nav-link-light.active::after { @apply w-full; }
+
+  /* Gradients Luxury */
+  .gradient-text { @apply bg-gradient-to-r from-[#C5A880] via-[#E8D9B8] to-[#C5A880] bg-clip-text text-transparent; }
+  .hero-gradient {
+    background: linear-gradient(135deg, #070708 0%, #0F0F10 25%, #1A1A1E 100%);
+  }
+  .hero-overlay-luxury {
+    background: linear-gradient(180deg, rgba(7,7,8,0.3) 0%, rgba(7,7,8,0.7) 40%, rgba(7,7,8,0.95) 100%);
+  }
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(7,7,8,0.2) 0%, rgba(7,7,8,0.55) 50%, rgba(7,7,8,0.9) 100%);
+  }
+  .luxury-overlay {
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(7,7,8,0.8) 100%), linear-gradient(180deg, rgba(7,7,8,0.1) 0%, rgba(7,7,8,0.85) 100%);
+  }
+
+  /* Typography Luxury */
+  .heading-xl {
+    @apply text-5xl md:text-7xl lg:text-[88px] font-light leading-[0.9] tracking-[-0.02em];
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .heading-lg {
+    @apply text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em];
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .heading-md {
+    @apply text-2xl md:text-3xl font-light leading-tight tracking-[-0.01em];
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .eyebrow {
+    @apply text-[11px] tracking-[0.28em] uppercase font-medium text-[#C5A880];
+  }
+  .eyebrow-dark {
+    @apply text-[11px] tracking-[0.28em] uppercase font-medium text-[#C5A880];
+  }
+
+  /* Hover Effects */
+  .hover-lift { @apply transition-all duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(10,10,11,0.15)]; }
+  .hover-gold { @apply transition-all duration-500 hover:border-[#C5A880]/50 hover:shadow-[0_8px_30px_rgba(197,168,128,0.15)]; }
+  
+  /* Image luxury */
+  .img-zoom { @apply overflow-hidden; }
+  .img-zoom img { @apply transition-transform duration-[1.2s] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]; }
+  .img-zoom:hover img { @apply scale-110; }
+  
+  /* Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { @apply bg-[#F5F0E8] rounded-full; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { @apply bg-[#C5A880] rounded-full hover:bg-[#B8986E]; }
+
+  /* Modal luxury */
+  .modal-backdrop { @apply fixed inset-0 bg-[#070708]/80 backdrop-blur-md z-50 flex items-center justify-center p-4; }
+  .modal-content { @apply bg-[#FCFBF9] rounded-none shadow-[0_25px_80px_rgba(0,0,0,0.4)] max-w-4xl w-full max-h-[90vh] overflow-hidden border border-[#E8D9B8]/20; }
+  
+  /* Shimmer */
+  .skeleton { @apply animate-pulse bg-[#E8E6E1] rounded-none; }
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(197,168,128,0.2), transparent);
+    background-size: 200% 100%;
+    animation: goldShimmer 1.8s infinite;
+  }
+  
+  /* Section spacing luxury */
+  .section-luxury { @apply py-20 md:py-28; }
+  .container-luxury { @apply max-w-[1400px] mx-auto px-6 lg:px-8; }
+}
